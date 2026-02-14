@@ -46,12 +46,18 @@ button{
 <script>
 
 // put your WhatsApp number
-let phone = "9155448012";
-
+    let phone = "9155448012";
 function yesClicked(){
-    let msg = "yes I love you  ❤️";
-    let url = "https://wa.me/"+phone+"?text="+encodeURIComponent(msg);
-    window.location.href = url;
+
+    let msg = "I love you too ❤️";
+    let link = document.createElement("a");
+
+    link.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+    link.target = "_blank";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 const noBtn = document.getElementById("no");
@@ -91,4 +97,5 @@ function moveButton(){
 
 </body>
 </html>
+
 
