@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Just One Question ❤️</title>
+
+<style>
+body{
+    background:#ffe0e9;
+    text-align:center;
+    font-family:Arial;
+    margin-top:120px;
+    overflow:hidden;
+}
+
+button{
+    padding:15px 30px;
+    font-size:20px;
+    margin:20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+#yes{
+    background:#28a745;
+    color:white;
+}
+
+#no{
+    background:#ff3b3b;
+    color:white;
+    position:absolute;
+    left:55%;
+    top:55%;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Do you love me Arzoo? 🥺❤️</h1>
+
+<button id="yes" onclick="yesClicked()">YES</button>
+<button id="no">NO</button>
+
+<script>
+
+// put your WhatsApp number
+let phone = "91XXXXXXXXXX";
+
+function yesClicked(){
+    let msg = "I love you too ❤️";
+    let url = "https://wa.me/"+phone+"?text="+encodeURIComponent(msg);
+    window.location.href = url;
+}
+
+const noBtn = document.getElementById("no");
+
+// Detect mouse movement (PC)
+document.addEventListener("mousemove", function(e){
+    escapeButton(e.clientX, e.clientY);
+});
+
+// Detect touch movement (mobile)
+document.addEventListener("touchstart", function(e){
+    let touch = e.touches[0];
+    escapeButton(touch.clientX, touch.clientY);
+});
+
+function escapeButton(cursorX, cursorY){
+    const rect = noBtn.getBoundingClientRect();
+
+    const distanceX = Math.abs(cursorX - (rect.left + rect.width/2));
+    const distanceY = Math.abs(cursorY - (rect.top + rect.height/2));
+
+    // If finger/mouse near button -> RUN!
+    if(distanceX < 120 && distanceY < 80){
+        moveButton();
+    }
+}
+
+function moveButton(){
+    let newX = Math.random() * (window.innerWidth - 120);
+    let newY = Math.random() * (window.innerHeight - 80);
+
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+}
+
+</script>
+
+</body>
+</html>
